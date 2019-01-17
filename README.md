@@ -1,6 +1,6 @@
 # walpaperr
 
-
+walpaperr will change your desktop's wallpaper automagically, pulling from different sources.
 
 ## Getting Started
 
