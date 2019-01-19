@@ -18,19 +18,19 @@ class Image(object):
     It can download images, set them as backgrounds and check their resolution.
     """
 
-    def __init__(self, url='', site='', image_name='', vRes='', hRes='', folder_name='walpaperr', index_in_dict=0):
-        self.folder_name = folder_name
+    def __init__(self, url='', web_site='', sub_site='', image_name='', vRes='', hRes='', main_folder_name='walpaperr'):
+        self.main_folder_name = main_folder_name
         self.date_format = '%d/%b/%Y'
         # name = whatever_the_file_is_named_on_the_server.extension (this way, it is unique).
         self.url: str = url  # Direct URL to image.
 
-        self.site: str = site  # name
+        self.web_site: str = web_site  # main site: i.e reddit, desktoprr
+        self.sub_site: str = sub_site  # sub_site: i.e subreddit, desktoprr
         self.vRes: str = vRes  # vertical resolution
         self.hRes: str = hRes  # horizontal resolution
         self.image_name: str = image_name
-        self.index_in_dict: int = index_in_dict
 
-        self.path_obj = Path.home() / "Pictures" / folder_name / site / image_name
+        self.path_obj = Path.home() / "Pictures" / main_folder_name / web_site / sub_site / image_name
         self.create_folder()
 
     def create_folder(self):
@@ -61,13 +61,13 @@ class Image(object):
         try:
             Path.unlink(self.path_obj)
         except FileNotFoundError:
-            print("File doesn't exist! Cannot delete.")
-            return False
+            #File doesn't exist. I don't need to delete it.
+            pass
         return True
 
     def save_image_data_to_file(self):
-        row = [self.url, self.site, self.image_name, self.vRes, self.hRes, datetime.today().strftime(self.date_format)]
-        filename = self.site + ".csv"
+        row = [self.url, self.sub_site, self.image_name, self.vRes, self.hRes, datetime.today().strftime(self.date_format)]
+        filename = self.sub_site + ".csv"
         csv_path = self.path_obj.parent / filename
         with open(csv_path, 'w', newline='') as f:
             writer = csv.writer(f)
@@ -75,7 +75,7 @@ class Image(object):
 
     @staticmethod
     def acceptable_resolution(hRes, vRes):
-        # Resolution is acceptable is acceptable if some dimension is > 720p.
+        # Resolution is acceptable if some dimension is > 720p.
         # TODO: Finish this method.
         # In list of as[ect ratios.
         # Greater than 1366 x 768
