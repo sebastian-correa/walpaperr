@@ -1,2 +1,0 @@
-Don't delete after time button.
-Download from all sites in download_sites.cfg
