@@ -14,6 +14,9 @@ class Reddit(WebSite):
     def __init__(self, subreddit='wallpaper', lastRequestURL='', image=''):
         super().__init__(main_url='https://www.reddit.com', sub_site=subreddit, lastRequestURL=lastRequestURL, image=image)
 
+    def __str__(self):
+        return self.main_url + "/r/" + self.sub_site
+
     # Setters
     def set_json(self, sort='hour', limit=25):
         """

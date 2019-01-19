@@ -1,13 +1,14 @@
-import os
-import requests
-import shutil
-from pathlib import Path
-import ctypes
 import csv
-
-from skimage.measure import compare_ssim as ssim
-import cv2
+import ctypes
+import os
+import shutil
 from datetime import datetime
+from pathlib import Path
+
+import requests
+from skimage.measure import compare_ssim as ssim
+
+import cv2
 
 
 class Image(object):
@@ -114,5 +115,3 @@ class Image(object):
                     return False
             else:
                 return False
-
-print("Image loadad!")

@@ -1,6 +1,9 @@
 import time
+
 import requests
+
 import classes as c
+
 
 def main(site_array, time_between_changes=0 * 3600 + 0 * 60 + 30):
     site_index = 0
@@ -56,5 +59,5 @@ def main(site_array, time_between_changes=0 * 3600 + 0 * 60 + 30):
 
 
 if __name__ == '__main__':
-    s_array = [c.Desktoprr(sub_site='desktoprr'), c.Reddit(subreddit='wallpaper'), c.Reddit(subreddit='wallpapers'), c.Reddit(subreddit='earthporn'),c.Reddit(subreddit='cityporn'), c.Reddit(subreddit='skyporn'), c.Reddit(subreddit='weatherporn'), c.Reddit(subreddit='villageporn'), c.Reddit(subreddit='spaceporn')]
+    s_array = c.CfgParser().get_all_valid_sites_from_cfg_file() 
     main(site_array=s_array)
