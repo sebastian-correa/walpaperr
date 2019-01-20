@@ -57,4 +57,3 @@ class Desktoprr(WebSite):
         self.set_image_dict_from_last_json(index=image_number)
         self.set_image_obj_from_image_dict()
         return self.image
-    

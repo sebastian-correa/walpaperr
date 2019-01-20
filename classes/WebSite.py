@@ -1,13 +1,15 @@
-import requests
-import time
-from pathlib import Path
 import csv
-from datetime import datetime
+import time
 from abc import ABCMeta, abstractmethod
+from datetime import datetime
+from pathlib import Path
+
+import requests
 
 from .image import Image
 
-class WebSite(metaclass=ABCMeta):
+
+class WebSite(object, metaclass=ABCMeta):
     """
     Main Website class. Holds common attributes and methods.
     """
@@ -27,7 +29,7 @@ class WebSite(metaclass=ABCMeta):
         self.request_retry_max_attempts = 5
 
         self.main_folder_name = main_folder_name
-        self.path_obj = Path.home() / "Pictures" / main_folder_name / type(self).__name__ / self.sub_site
+        self.path_obj = Path.home() / "Pictures" / main_folder_name / type(self).__name__ / self.sub_site  # type(self).__name__ -> Gets instance's class and then grabs name (gets self's class and then name)
 
     def __str__(self):
         return self.main_url + "/" + self.sub_site
