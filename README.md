@@ -4,7 +4,9 @@ walpaperr will change your desktop's wallpaper automagically, pulling from diffe
 
 ## Getting Started
 
-Download, install requirements (via `pip` for instance) and run `script.py`. 
+Download, install requirements (via `pip` for instance) and run `script.py`.
+
+To add download sites (subreddits), edit the `download_sites.cfg` file, adding a new entry of the form `reddit, subreddit` per subreddit.
 
 ### Prerequisites
 
